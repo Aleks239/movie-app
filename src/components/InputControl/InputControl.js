@@ -1,19 +1,19 @@
 import './InputControl.css';
-import { Navbar, Container, Nav, Form } from 'react-bootstrap';
+import { Navbar, Nav, Form } from 'react-bootstrap';
 
-function InputControl() {
+function InputControl({handleFilter, movies}) {
   return (
    
  <Navbar className="custom-nav" bg="light" variant="light">
             <Nav.Item className="custom-cont-one">
-            <Form.Select>
+            <Form.Select disabled={movies ? false : true} onChange={handleFilter}>
         <option>Sort By...</option>
         <option value="year">Year</option>
         <option value="episode">Episode</option>
       </Form.Select>
             </Nav.Item>
            <Nav.Item className="custom-cont">
-           <Form.Control type="text" placeholder="Type to search..." />
+           <Form.Control disabled={movies ? false : true} type="text" placeholder="Type to search..." />
            </Nav.Item>
       </Navbar>
   );

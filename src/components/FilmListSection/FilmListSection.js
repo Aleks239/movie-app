@@ -1,5 +1,5 @@
 import './FilmListSection.css';
-import { Navbar, Container, Nav, Form, Row, Col, ListGroup, Stack, Spinner } from 'react-bootstrap';
+import { ListGroup, Stack, Spinner } from 'react-bootstrap';
 
 function FilmListSection({movies, handleFocus}) {
 

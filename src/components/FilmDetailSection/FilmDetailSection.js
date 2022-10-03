@@ -1,4 +1,4 @@
-import { Navbar, Container, Nav, Form, Row, Col, ListGroup, Stack, Spinner } from 'react-bootstrap';
+import {Col} from 'react-bootstrap';
 
 function FilmDetailSection({title, description, director}) {
   return (

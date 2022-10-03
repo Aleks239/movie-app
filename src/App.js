@@ -1,6 +1,6 @@
 import './App.css';
 import {useEffect, useState} from 'react';
-import { Navbar, Container, Nav, Form, Row, Col, ListGroup } from 'react-bootstrap';
+import {Row, Col} from 'react-bootstrap';
 import InputControl from './components/InputControl/InputControl';
 import FilmListSection from './components/FilmListSection/FilmListSection';
 import {fetchMovies} from './utlis';
@@ -15,7 +15,7 @@ function App() {
         </Col>
   );
   const [allMovies, setAllMovies] = useState(null);
-  const [inFocusMovie, setInFocusMovie] = useState(null)
+  const [inFocusMovie, setInFocusMovie] = useState(null);
   useEffect(() => {
       fetchMovies().then((json) => {
         const movies = json.results;
@@ -30,9 +30,22 @@ function App() {
     setInFocusMovie(movie);
   }
 
+  const handleFilter = ({target}) => {
+    switch(target.value){
+      case 'year':
+        setAllMovies((prev) => [...prev].sort((a,b) => new Date(b.release_date) - new Date(a.release_date)));
+        break;
+      case 'episode':
+        setAllMovies((prev) => [...prev].sort((a,b) => b.episode_id - a.episode_id));
+        break;
+      default:
+        break;
+    }
+  }
+
   return (
    <div>
-    <InputControl></InputControl>
+    <InputControl movies={allMovies} handleFilter={handleFilter}></InputControl>
       <Row>
         <Col className="list-films">
         <FilmListSection handleFocus={handleMovieInFocus} movies={allMovies}></FilmListSection>
