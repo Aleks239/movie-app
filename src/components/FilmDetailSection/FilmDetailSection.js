@@ -5,7 +5,7 @@ function FilmDetailSection({title, description, director}) {
     <Col className="custom-movie-details-item">
     <h3>{title}</h3>
     <p>{description}</p>
-    <p>Directed by {director}</p>
+    <p>Directed by: {director}</p>
   </Col>
   );
 }
