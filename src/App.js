@@ -3,7 +3,7 @@ import {useEffect, useState} from 'react';
 import { Navbar, Container, Nav, Form, Row, Col, ListGroup } from 'react-bootstrap';
 import InputControl from './components/InputControl/InputControl';
 import FilmListSection from './components/FilmListSection/FilmListSection';
-import fetchMovies from './utlis';
+import {fetchMovies} from './utlis';
 import FilmDetailSection from './components/FilmDetailSection/FilmDetailSection';
 
 function App() {

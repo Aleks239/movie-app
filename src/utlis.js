@@ -1,4 +1,4 @@
-const fetchMovies = async () => {
+export const fetchMovies = async () => {
     const response = await fetch('https://swapi.dev/api/films/?format=json');
     if(response.ok){
             const json = await response.json();
@@ -7,11 +7,9 @@ const fetchMovies = async () => {
             const message = `An error has occured: ${response.status}`;
             throw new Error(message);
         }
-        
-       
-    
-    
+           
 
 }
 
-export default fetchMovies;
+
+

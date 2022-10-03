@@ -18,7 +18,7 @@ function FilmListSection({movies, handleFocus}) {
       <Stack direction="horizontal" gap={3}>
       <div className=""><small>Episode {movie.episode_id}</small></div>
       <div className=""><strong>{movie.title}</strong></div>
-      <div className="ms-auto">{movie.created}</div>
+      <div className="ms-auto">{movie.release_date}</div>
     </Stack>
       </ListGroup.Item>
             )
