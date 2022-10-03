@@ -1,7 +1,7 @@
 import './InputControl.css';
 import { Navbar, Nav, Form } from 'react-bootstrap';
 
-function InputControl({handleFilter, movies}) {
+function InputControl({handleFilter, movies, handleSearch}) {
   return (
    
  <Navbar className="custom-nav" bg="light" variant="light">
@@ -13,7 +13,7 @@ function InputControl({handleFilter, movies}) {
       </Form.Select>
             </Nav.Item>
            <Nav.Item className="custom-cont">
-           <Form.Control disabled={movies ? false : true} type="text" placeholder="Type to search..." />
+           <Form.Control onChange={handleSearch} disabled={movies ? false : true} type="text" placeholder="Type to search..." />
            </Nav.Item>
       </Navbar>
   );

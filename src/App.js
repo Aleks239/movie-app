@@ -15,12 +15,13 @@ function App() {
         </Col>
   );
   const [allMovies, setAllMovies] = useState(null);
+  const [moviesCopy, setMoviesCopy] = useState([]);
   const [inFocusMovie, setInFocusMovie] = useState(null);
   useEffect(() => {
       fetchMovies().then((json) => {
         const movies = json.results;
-        console.log(movies)
         setAllMovies(movies);
+        setMoviesCopy(movies)
       })
   },[]);
 
@@ -33,7 +34,8 @@ function App() {
   const handleFilter = ({target}) => {
     switch(target.value){
       case 'year':
-        setAllMovies((prev) => [...prev].sort((a,b) => new Date(b.release_date) - new Date(a.release_date)));
+        setAllMovies((prev) => 
+        [...prev].sort((a,b) => new Date(b.release_date) - new Date(a.release_date)));
         break;
       case 'episode':
         setAllMovies((prev) => [...prev].sort((a,b) => b.episode_id - a.episode_id));
@@ -43,9 +45,14 @@ function App() {
     }
   }
 
+  const handleSearch = ({target}) => {
+    setAllMovies(moviesCopy)
+    setAllMovies((prev) => prev.filter((movie) => movie.title.toLowerCase().includes(target.value.toLowerCase())))
+  }
+
   return (
    <div>
-    <InputControl movies={allMovies} handleFilter={handleFilter}></InputControl>
+    <InputControl handleSearch={handleSearch} movies={allMovies} handleFilter={handleFilter}></InputControl>
       <Row>
         <Col className="list-films">
         <FilmListSection handleFocus={handleMovieInFocus} movies={allMovies}></FilmListSection>
